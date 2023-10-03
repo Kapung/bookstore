@@ -1,11 +1,21 @@
 [
     {
+        "Title": "Title1",
+        "Author": "Daudi",
+        "ISBN": "817525766-0",
+        "Year": 1998,
+        "Genre": "Novel",
+        "Price": 29.99,
+        "Quantity": 0
+    },
+    {
         "Title": "Title2",
         "Author": "John Smith",
         "ISBN": "123456789-0",
         "Year": 2005,
         "Genre": "Mystery",
-        "Price": 19.99
+        "Price": 19.99,
+        "Quantity": 0
     },
     {
         "Title": "The Great Gatsby",
@@ -13,7 +23,8 @@
         "ISBN": "9780743273565",
         "Year": 1925,
         "Genre": "Classic",
-        "Price": 12.99
+        "Price": 12.99,
+        "Quantity": 0
     },
     {
         "Title": "Harry Potter and the Philosopher's Stone",
@@ -21,7 +32,8 @@
         "ISBN": "9780747532743",
         "Year": 1997,
         "Genre": "Fantasy",
-        "Price": 24.99
+        "Price": 24.99,
+        "Quantity": 0
     },
     {
         "Title": "To Kill a Mockingbird",
@@ -29,7 +41,8 @@
         "ISBN": "9780061120084",
         "Year": 1960,
         "Genre": "Classic",
-        "Price": 14.95
+        "Price": 14.95,
+        "Quantity": 0
     },
     {
         "Title": "1984",
@@ -37,7 +50,8 @@
         "ISBN": "9780451524935",
         "Year": 1949,
         "Genre": "Dystopian",
-        "Price": 9.99
+        "Price": 9.99,
+        "Quantity": 0
     },
     {
         "Title": "The Catcher in the Rye",
@@ -45,7 +59,8 @@
         "ISBN": "9780316769488",
         "Year": 1951,
         "Genre": "Coming-of-Age",
-        "Price": 11.49
+        "Price": 11.49,
+        "Quantity": 0
     },
     {
         "Title": "The Hobbit",
@@ -53,7 +68,8 @@
         "ISBN": "9780618260300",
         "Year": 1937,
         "Genre": "Fantasy",
-        "Price": 18.99
+        "Price": 18.99,
+        "Quantity": 0
     },
     {
         "Title": "Pride and Prejudice",
@@ -61,7 +77,8 @@
         "ISBN": "9780141439518",
         "Year": 1813,
         "Genre": "Classic",
-        "Price": 8.95
+        "Price": 8.95,
+        "Quantity": 0
     },
     {
         "Title": "The Da Vinci Code",
@@ -69,6 +86,7 @@
         "ISBN": "9780307474278",
         "Year": 2003,
         "Genre": "Thriller",
-        "Price": 16.99
+        "Price": 16.99,
+        "Quantity": 0
     }
 ]

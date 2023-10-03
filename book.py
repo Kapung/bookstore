@@ -55,7 +55,8 @@ class Book():
                 "ISBN" : self.__isbn,
                 "Year" : self.__year,
                 "Genre" : self.__genre,
-                "Price" : self.__price}
+                "Price" : self.__price,
+                "Quantity" : self.__quantity}
         
         return data
 

@@ -1,10 +1,12 @@
 class User():
 
-    def __init__(self, name, email) -> None:
+    def __init__(self, name) -> None:
         self.__name = name
-        self.__email = email
         self.__shopping_cart = []
 
+
+    def get_username(self):
+        return self.__name
 
     def add_shopping_cart(self, book):
         self.__shopping_cart.append(book)

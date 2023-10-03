@@ -23,19 +23,17 @@ class Inventory():
                 try:
                     file = [book for book in file if book.get("ISBN") != isbn]
 
-                    if len(file) == self.get_different_book_number():
-                        print(f"No books by that ISBN in the inventory")
                     with open("books.json", "w") as books:
                         json.dump(file, books, indent = 4)
 
                 except Exception as e:
-                    print(e)
+                    pass
 
                 print(f"Book removed: {self.__current_inventory.pop(isbn)}")
             else:
-                raise Exception("The book could not be found")
+                print(f"The book could not be found by {isbn}")
         else:
-            raise Exception("No values to delete")
+            print("No values to delete")
 
 
     def update(self, type_search, update_value):
@@ -54,7 +52,15 @@ class Inventory():
         
     def get_different_book_number(self):
         return len(self.__current_inventory)
-
+    
+    def get_inventory(self):
+        inv = []
+        if self.__current_inventory:
+            for value in self.__current_inventory.values():
+                inv.append(value)
+            return inv
+        else:
+            print("Inventory empty")
 
     def find(self, type_search, value):
         if self.__current_inventory:
@@ -65,8 +71,14 @@ class Inventory():
                     query = [book for _, book in self.__current_inventory.items() if book.get_title() == value]
                 case "author":
                     query = [book for _, book in self.__current_inventory.items() if book.get_author() == value]
+                case "isbn":
+                    query = [book for _, book in self.__current_inventory.items() if book.get_isbn() == value]
+                case "year":
+                    query = [book for _, book in self.__current_inventory.items() if book.get_year() == value]
                 case "genre":
                     query = [book for _, book in self.__current_inventory.items() if book.get_genre() == value]
+                case "price":
+                    query = [book for _, book in self.__current_inventory.items() if book.get_price() == value]
                 case _:
                     raise Exception("Value type not found")
             
@@ -90,6 +102,7 @@ class Inventory():
         if self.__current_inventory:
             for value in self.__current_inventory.values():
                 print(value)
+            return inv
         else:
-            raise Exception("Inventory empty")
+            print("Inventory empty")
         

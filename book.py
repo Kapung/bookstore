@@ -11,6 +11,7 @@ class Book():
         self.__price = price
         self.__quantity = 0
 
+
     def get_title(self):
         return self.__title
     
@@ -47,29 +48,36 @@ class Book():
     def increase_quantity(self, value):
         self.__quantity += value
 
-    def save(self):
-        file = []
+    def get_data(self):
+        #Data for comparison
         data = {"Title" : self.__title,
                 "Author": self.__author,
                 "ISBN" : self.__isbn,
                 "Year" : self.__year,
                 "Genre" : self.__genre,
                 "Price" : self.__price}
+        
+        return data
 
+    def save(self):
+        file = []
+        data = self.get_data()
         try:
-            with open("books.json", "r") as jsonfile:
-                file = json.load(jsonfile)
+            with open("books.json", "r") as books:
+                file = json.load(books)
         except Exception as e:
-            file = []
+            pass
 
+        #Converts data and file into JSON strings for comparison
         json_data = json.dumps(data, sort_keys=True)
         json_file = [json.dumps(item, sort_keys=True) for item in file]
 
+        #If new book isn't duplicate add it to the file
         if json_data not in json_file:
             file.append(data)
 
-        with open("books.json", "w") as jsonfile:
-            json.dump(file, jsonfile, indent = 4)
+        with open("books.json", "w") as books:
+            json.dump(file, books, indent = 4)
     
     def __str__(self):
         return f"\nTitle: {self.__title}\nAuthor: {self.__author}\nIsbn: {self.__isbn}\nYear: {self.__year}\nGenre: {self.__genre}\nPrice: {self.__price}€\nQuantity: {self.__quantity}\n"

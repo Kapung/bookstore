@@ -29,7 +29,7 @@ class Inventory():
                 except Exception as e:
                     pass
 
-                print(f"Book removed: {self.__current_inventory.pop(isbn)}")
+                print(f"\nBook removed: {self.__current_inventory.pop(isbn)}\n")
             else:
                 print(f"The book could not be found by {isbn}")
         else:

@@ -1,6 +1,4 @@
-from inventory import Inventory
 from book import Book
-from user import User
 from window import Window
 
 def main():
@@ -15,18 +13,7 @@ def main():
                   Book("Pride and Prejudice", "Jane Austen", "9780141439518", 1813, "Classic", 8.95),
                   Book("The Da Vinci Code", "Dan Brown", "9780307474278", 2003, "Thriller", 16.99)]
     
-    window = Window(620, 240)
-    #inventory = Inventory()
-    
-    #for item in test_books:
-    #    inventory.add_book(item.get_isbn, item)
-
-    #inventory.print_inventory()
-    #inventory.add_book("817525766-0", Book("Title1", "Daudi", "817525766-0", 1998, "Novel", 29.99))
-    #inventory.remove_book("817525766-0")
-    #query = inventory.find("genre".lower(), "Classic")
-
-
+    window = Window(620, 260)
 
 if __name__ == "__main__":
     main()

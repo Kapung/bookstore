@@ -62,30 +62,31 @@ class Inventory():
         else:
             print("Inventory empty")
 
-    def find(self, type_search, value):
+    def search_values(self, type_search, value):
         if self.__current_inventory:
             query = None
             #Checks for search type
             match type_search:
-                case "title":
-                    query = [book for _, book in self.__current_inventory.items() if book.get_title() == value]
-                case "author":
-                    query = [book for _, book in self.__current_inventory.items() if book.get_author() == value]
-                case "isbn":
-                    query = [book for _, book in self.__current_inventory.items() if book.get_isbn() == value]
-                case "year":
-                    query = [book for _, book in self.__current_inventory.items() if book.get_year() == value]
-                case "genre":
-                    query = [book for _, book in self.__current_inventory.items() if book.get_genre() == value]
-                case "price":
-                    query = [book for _, book in self.__current_inventory.items() if book.get_price() == value]
+                case "Title":
+                    query = [book for _, book in self.__current_inventory.items() if value.lower() in book.get_title().lower()]
+                case "Author":
+                    query = [book for _, book in self.__current_inventory.items() if value.lower() in book.get_author().lower()]
+                case "ISBN":
+                    query = [book for _, book in self.__current_inventory.items() if value in book.get_isbn()]
+                case "Year":
+                    query = [book for _, book in self.__current_inventory.items() if int(value) == book.get_year()]
+                case "Genre":
+                    query = [book for _, book in self.__current_inventory.items() if value.lower() in book.get_genre().lower()]
+                case "Price":
+                    query = [book for _, book in self.__current_inventory.items() if book.get_price() >= float(value)]
+                case "Quantity":
+                    query = [book for _, book in self.__current_inventory.items() if book.get_quantity() >= int(value)]
                 case _:
                     raise Exception("Value type not found")
-            
+                
             #If books found print all of them
             if query:
-                for book in query:
-                    print(book)
+                return query
             else:
                 print("Books not found")
 

@@ -11,6 +11,7 @@ class Window():
         self.__root = None
         self.__user = None
         self.__inventory = None
+        self.t = self.d = self.i = self.y = self.g = self.p = self.q = ""
 
         self.start_window()
 
@@ -69,6 +70,9 @@ class Window():
         self.__root.geometry(f"{self.width}x{self.height}")
         self.__root.protocol("WM_DELETE_WINDOW", self.close_window)
 
+        details_t = tk.StringVar()
+        details_t.set(f"Title:\nAuthor:\nISBN:\nYear:\nGenre:\nPrice\nCopies left:")
+
         #Main window frame
         frame = ttk.Frame(self.__root)
 
@@ -78,20 +82,18 @@ class Window():
         #Top left label
         logged = ttk.Label(top_frame, text=f"Logged in as {self.__user.get_username()}")
 
-        #Search button for seach queries
-        search_button = ttk.Button(top_frame, text="Search books", command=self.search)
+        #Boot details
+        details = ttk.Label(frame, textvariable=details_t)
 
         #List of books in the bookstore
         book_list = tk.Listbox(frame)
-        book_list.bind("<<ListboxSelect>>", self.details)
         self.initialize(book_list)
         
+        #Search button for seach queries
+        search_button = ttk.Button(top_frame, text="Search books", command=lambda: self.search(book_list, details_t))
+
         #Search by different values
         search_box = ttk.Entry(top_frame)
-
-        #Boot details
-        details = tk.Text(self.__root, wrap=tk.WORD, height=10, width=40)
-        details.pack(side=tk.RIGHT, padx=10, pady=10)
 
         style = ttk.Style()
         style.configure("TButton", padding=6, relief="flat", background="#ccc")
@@ -103,23 +105,26 @@ class Window():
         search_button.pack(side=tk.RIGHT)
         book_list.pack(side=tk.LEFT)
         search_box.pack(side=tk.RIGHT)
-
-        def details(self):
-            index = book_list.curselection()
-
-            if index:
-                index = index[0]
+        details.pack(side=tk.LEFT, padx=10, pady=10)
 
         
         pass
     def initialize(self, box):
-        self.__inventory = Inventory()
-        for book in self.__inventory.get_inventory():
+        self.__inventory = Inventory().get_inventory()
+        for book in self.__inventory:
             box.insert(tk.END, book.get_title())
             
-
-    def search(self):
+    def details(self, books):
         pass
+
+    def search(self, books, label):
+        index = books.curselection()
+        print(index)
+        print(index)
+        if index:
+            book = self.__inventory[index[0]]
+            label.set(f"Title: {book.get_title()}\nAuthor: {book.get_author()}\nISBN: {book.get_isbn()}\nYear: {book.get_year()}\nGenre: {book.get_genre()}\nPrice: {book.get_price()}€\nCopies left: {book.get_quantity()}")
+            print(self.t)
 
     def add_to_cart(self):
         pass

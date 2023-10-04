@@ -102,7 +102,6 @@ class Inventory():
         if self.__current_inventory:
             for value in self.__current_inventory.values():
                 print(value)
-            return inv
         else:
             print("Inventory empty")
         

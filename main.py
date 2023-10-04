@@ -15,7 +15,7 @@ def main():
                   Book("Pride and Prejudice", "Jane Austen", "9780141439518", 1813, "Classic", 8.95),
                   Book("The Da Vinci Code", "Dan Brown", "9780307474278", 2003, "Thriller", 16.99)]
     
-    window = Window(800, 600)
+    window = Window(620, 240)
     #inventory = Inventory()
     
     #for item in test_books:
